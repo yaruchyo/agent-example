@@ -43,7 +43,7 @@ This project serves as a **reference implementation** for developers who want to
 ### 1. Clone & Install
 
 ```bash
-git clone https://github.com/yaruchyo/example-agent.git
+git clone https://gitlab.com/yaruchyk.o/agent-example.git
 cd example-agent
 
 # Create virtual environment
