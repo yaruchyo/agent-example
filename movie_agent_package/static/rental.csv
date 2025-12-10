@@ -1,0 +1,286 @@
+city;district;living area;balcon;price;energy category;availability;available from;sort/long term;additional information
+Berlin;Mitte;65;True;1650;B;Immediately;2025-12-15;Long-term;Modern fitted kitchen included
+Hamburg;Altona;55;True;1200;D;By agreement;2026-01-01;Long-term;Quiet backyard location
+Munich;Schwabing;82;True;2800;A;Immediately;2025-12-20;Long-term;Luxury renovation, near English Garden
+Cologne;Ehrenfeld;48;False;950;E;Specific date;2026-02-01;Long-term;Students preferred
+Frankfurt;Nordend;70;True;1850;C;Immediately;2026-01-15;Long-term;Underground parking available
+Stuttgart;West;60;True;1400;C;By agreement;2026-03-01;Long-term;High ceilings, classic building
+Düsseldorf;Bilk;52;False;1100;D;Specific date;2026-01-01;Short-term;Fully furnished apartment
+Leipzig;Südvorstadt;75;True;950;B;Immediately;2025-12-10;Long-term;Close to Clara-Zetkin Park
+Dortmund;Kreuzviertel;68;True;890;F;By agreement;2026-02-15;Long-term;Needs some renovation
+Essen;Rüttenscheid;58;True;920;C;Immediately;2026-01-01;Long-term;Popular nightlife area
+Berlin;Kreuzberg;45;False;1100;G;Specific date;2026-04-01;Short-term;Sublet for 6 months
+Hamburg;Eimsbüttel;90;True;2100;B;By agreement;2026-02-01;Long-term;Ideal for families
+Munich;Maxvorstadt;35;False;1350;C;Immediately;2025-12-15;Long-term;Perfect for young professionals
+Cologne;Nippes;72;True;1500;B;By agreement;2026-01-15;Long-term;Newly renovated bathroom
+Frankfurt;Sachsenhausen;110;True;3200;A+;Specific date;2026-05-01;Long-term;Penthouse with skyline view
+Stuttgart;Bad Cannstatt;62;False;1250;E;Immediately;2026-01-01;Long-term;Near Wilhelma zoo
+Düsseldorf;Flingern;50;True;1050;C;By agreement;2026-02-01;Long-term;Trendy neighborhood
+Leipzig;Plagwitz;85;True;1100;A;Immediately;2025-12-01;Long-term;Loft style apartment
+Dortmund;Hörde;55;True;750;D;Specific date;2026-03-01;Long-term;Near Phoenix Lake
+Essen;Südviertel;42;False;600;E;By agreement;2026-01-15;Short-term;Close to main station
+Berlin;Neukölln;58;True;1300;D;Immediately;2026-01-01;Long-term;Wooden floors
+Hamburg;Hafencity;105;True;3500;A;Specific date;2026-06-01;Long-term;Waterfront view
+Munich;Giesing;60;True;1700;D;By agreement;2026-02-15;Long-term;Quiet residential area
+Cologne;Deutz;53;False;1000;F;Immediately;2026-01-01;Long-term;Near trade fair grounds
+Frankfurt;Bornheim;66;True;1600;C;Specific date;2026-03-15;Long-term;Berger Straße nearby
+Stuttgart;Mitte;40;False;1100;B;By agreement;2026-01-01;Short-term;Business apartment
+Düsseldorf;Oberkassel;95;True;2400;B;Immediately;2025-12-20;Long-term;Exclusive location
+Leipzig;Zentrum;45;True;700;B;By agreement;2026-02-01;Long-term;New building
+Dortmund;Innenstadt;63;False;800;E;Specific date;2026-04-01;Long-term;Good transport connection
+Essen;Werden;70;True;950;D;Immediately;2026-01-15;Long-term;Green surroundings
+Berlin;Prenzlauer Berg;88;True;2300;B;By agreement;2026-03-01;Long-term;Elevator available
+Hamburg;Winterhude;75;True;1950;C;Specific date;2026-02-01;Long-term;Near Stadtpark
+Munich;Haidhausen;50;False;1600;D;Immediately;2026-01-01;Long-term;French quarter charm
+Cologne;Lindenthal;80;True;1750;C;By agreement;2026-02-15;Long-term;Near University
+Frankfurt;Westend;120;True;4100;A;Specific date;2026-05-15;Long-term;Historic villa floor
+Stuttgart;Ost;55;True;1300;E;Immediately;2026-01-01;Long-term;Hillside view
+Düsseldorf;Pempelfort;68;True;1550;B;By agreement;2026-03-01;Long-term;Bright rooms
+Leipzig;Connewitz;62;True;850;D;Specific date;2026-02-01;Long-term;Alternative scene nearby
+Dortmund;Hombruch;78;True;920;C;Immediately;2026-01-15;Long-term;Shopping street nearby
+Essen;Bredeney;90;True;1400;B;By agreement;2026-04-01;Long-term;Upscale neighborhood
+Berlin;Friedrichshain;54;True;1400;E;Specific date;2026-02-01;Long-term;Party district
+Hamburg;St. Pauli;45;False;1150;F;Immediately;2025-12-15;Short-term;Furnished, nightlife area
+Munich;Bogenhausen;110;True;3800;A;By agreement;2026-03-15;Long-term;Two balconies
+Cologne;Südstadt;65;True;1450;D;Specific date;2026-01-01;Long-term;Chlodwigplatz nearby
+Frankfurt;Gallus;58;True;1500;B;Immediately;2026-01-15;Long-term;New construction
+Stuttgart;Feuerbach;70;True;1350;C;By agreement;2026-02-01;Long-term;Family friendly
+Düsseldorf;Stadtmitte;48;False;1200;C;Immediately;2026-01-01;Short-term;Cleaning service included
+Leipzig;Gohlis;95;True;1300;A;Specific date;2026-03-01;Long-term;Restored old building
+Dortmund;Dorstfeld;52;False;650;G;By agreement;2026-02-15;Long-term;University nearby
+Essen;Frohnhausen;60;True;720;E;Immediately;2026-01-01;Long-term;Available immediately
+Berlin;Charlottenburg;100;True;2600;C;Specific date;2026-04-01;Long-term;Near Ku'damm
+Hamburg;Ottensen;66;True;1600;D;By agreement;2026-02-01;Long-term;High demand area
+Munich;Sendling;55;True;1550;C;Immediately;2026-01-15;Long-term;Near Flaucher
+Cologne;Mülheim;62;True;1100;E;Specific date;2026-03-01;Long-term;Emerging district
+Frankfurt;Ostend;75;True;2100;A;By agreement;2026-01-01;Long-term;Near EZB tower
+Stuttgart;Zuffenhausen;82;True;1600;B;Immediately;2026-02-15;Long-term;Porsche employees preferred
+Düsseldorf;Derendorf;58;True;1250;D;Specific date;2026-01-01;Long-term;Good highway access
+Leipzig;Lindenau;50;False;680;E;By agreement;2026-02-01;Long-term;Near canal
+Dortmund;Körne;64;True;780;F;Immediately;2026-01-15;Long-term;Pets allowed
+Essen;Holsterhausen;68;True;850;D;Specific date;2026-03-01;Long-term;Near hospital
+Berlin;Wilmersdorf;92;True;2200;C;By agreement;2026-01-01;Long-term;Quiet side street
+Hamburg;Blankenese;130;True;4500;A+;Immediately;2026-04-01;Long-term;River view, luxury
+Munich;Laim;48;True;1250;E;Specific date;2026-02-01;Long-term;Good subway connection
+Cologne;Rodenkirchen;85;True;1800;B;By agreement;2026-03-15;Long-term;Near Rhine river
+Frankfurt;Bockenheim;60;True;1550;D;Immediately;2026-01-01;Long-term;Near University Campus
+Stuttgart;Vaihingen;55;True;1200;C;Specific date;2026-02-01;Short-term;Commuter apartment
+Düsseldorf;Unterbilk;72;True;1650;B;By agreement;2026-01-15;Long-term;Near Media Harbor
+Leipzig;Reudnitz;58;False;750;C;Immediately;2026-01-01;Long-term;Shared flat suitable
+Dortmund;Brackel;70;True;820;E;Specific date;2026-03-01;Long-term;Parking spot included
+Essen;Steele;65;True;790;D;By agreement;2026-02-01;Long-term;Balcony south-facing
+Berlin;Wedding;50;False;950;F;Immediately;2025-12-15;Long-term;Up and coming area
+Hamburg;Barmbek;62;True;1350;C;Specific date;2026-01-15;Long-term;Brick architecture
+Munich;Moosach;75;True;1900;B;By agreement;2026-03-01;Long-term;Near Olympia shopping mall
+Cologne;Kalk;55;False;850;E;Immediately;2026-01-01;Long-term;Affordable option
+Frankfurt;Riedberg;88;True;2200;A;Specific date;2026-04-01;Long-term;Modern energy efficient
+Stuttgart;Degerloch;95;True;2100;B;By agreement;2026-02-15;Long-term;Near TV tower
+Düsseldorf;Golzheim;66;True;1400;C;Immediately;2026-01-01;Long-term;Near Rhine park
+Leipzig;Schleußig;80;True;1200;B;Specific date;2026-03-01;Long-term;Riverboat availability
+Dortmund;Aplerbeck;74;True;880;D;By agreement;2026-01-15;Long-term;Rural feeling
+Essen;Altenessen;58;False;620;F;Immediately;2026-02-01;Long-term;Budget friendly
+Berlin;Pankow;78;True;1700;B;Specific date;2026-03-15;Long-term;Family area
+Hamburg;Harburg;52;True;900;E;By agreement;2026-01-01;Long-term;South of Elbe
+Munich;Pasing;85;True;2100;C;Immediately;2026-02-01;Long-term;Includes garage
+Cologne;Chorweiler;60;True;750;G;Specific date;2026-01-15;Long-term;High rise building
+Frankfurt;Eschersheim;68;True;1450;D;By agreement;2026-03-01;Long-term;Near Nidda park
+Stuttgart;Möhringen;64;True;1300;C;Immediately;2026-01-01;Long-term;SI-Centrum nearby
+Düsseldorf;Gerresheim;72;True;1350;D;Specific date;2026-02-15;Long-term;Historical center
+Leipzig;Möckern;56;False;690;E;By agreement;2026-01-01;Long-term;Quiet street
+Dortmund;Eving;62;True;700;F;Immediately;2026-03-01;Long-term;Standard equipment
+Essen;Kettwig;85;True;1100;C;Specific date;2026-04-01;Long-term;Old town charm
+Berlin;Spandau;66;True;1200;D;By agreement;2026-01-15;Long-term;Near citadel
+Hamburg;Wilhelmsburg;58;True;1050;C;Immediately;2026-02-01;Long-term;Garden show park
+Munich;Neuhausen;62;True;1650;B;Specific date;2026-03-01;Long-term;Historical building
+Cologne;Porz;70;True;1150;D;By agreement;2026-01-01;Long-term;Near airport
+Frankfurt;Bahnhofsviertel;45;False;1300;E;Immediately;2025-12-20;Short-term;Central location
+Stuttgart;Untertürkheim;60;True;1150;D;Specific date;2026-02-01;Long-term;Wine yards view
+Düsseldorf;Benrath;82;True;1500;C;By agreement;2026-03-15;Long-term;Near palace park
+Leipzig;Volkmarsdorf;54;False;600;F;Immediately;2026-01-01;Long-term;Low budget
+Dortmund;Mengede;68;True;760;E;Specific date;2026-02-15;Long-term;Highway access
+Essen;Stoppenberg;55;True;650;G;By agreement;2026-01-15;Long-term;Near Zollverein
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
