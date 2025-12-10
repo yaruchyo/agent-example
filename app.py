@@ -1,9 +1,11 @@
 import os
-from movie_agent_package.repository_layer.get_movies import get_movies
-from flask import Flask, render_template, request, jsonify
+
 from dotenv import load_dotenv
-from movie_agent_package.service_layer.gemini_llm import GeminiLLM
+from flask import Flask, jsonify, render_template, request
 from rotagent import AgentAuth
+
+from movie_agent_package.repository_layer.get_movies import get_movies
+from movie_agent_package.service_layer.gemini_llm import GeminiLLM
 
 load_dotenv()
 app = Flask(__name__)
