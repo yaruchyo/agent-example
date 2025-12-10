@@ -220,7 +220,7 @@
 <body>
     <div class="container">
         <header class="header">
-            <div class="badge">Independent Flask Server</div>
+            <div class="badge">Web Server Running</div>
             <h1>{{ data_source_name }} Web Page</h1>
             <p>
                 <strong>What is this?</strong> This is a standalone web server — completely independent from any
@@ -232,9 +232,11 @@
                 web server.
             </p>
             <p style="margin-top: 0.75rem;">
-                📂 <a href="https://gitlab.com/yaruchyk.o/agent-example">View source code on GitLab</a>
-                <br>
-                This server communicates via 2 endpoints:
+                📂 <a href="https://gitlab.com/yaruchyk.o/agent-example" style="color: #16a34a;">View source code on
+                    GitLab</a>
+            </p>
+            <p style="margin-top: 1rem; font-weight: 500; color: #444;">
+                This server exposes 2 endpoints:
             </p>
         </header>
 
@@ -242,27 +244,29 @@
             <div class="endpoint">
                 <span class="method get">GET</span>
                 <div class="path">/</div>
-                <p><strong>Homepage</strong> — You're here! This page displays the agent's data source (rental listings
-                    below) and explains how the agent works.</p>
+                <p><strong>Homepage</strong> — You're here! This page displays some random data (just tried to simulate simplified real webpage with real data on it).</p>
             </div>
 
             <div class="endpoint">
                 <span class="method post">POST</span>
                 <div class="path">/agent</div>
-                <p><strong>AI Query Endpoint</strong> — When users ask questions through Oqtopus, requests come here.
+                <p><strong>AI Query Endpoint</strong> — When users ask questions through <a href="https://gitlab.com/yaruchyk.o/oqtopus" style="color: #16a34a;">oqtopus [GitLab Repo]</a>, requests come here.
                     The agent uses LLM to analyze the data and return intelligent answers.</p>
             </div>
         </div>
 
-        <p style="margin-top: 1.5rem; margin-bottom: 1.5rem; color: #666; text-align: center;">
-            👇 Below is sample rental real estate data from Germany — the knowledge base this agent can answer questions
-            about.
+        <p style="margin-top: 2rem; margin-bottom: 1.5rem; color: #666; text-align: center; font-size: 0.95rem;">
+            👇 Below is sample {{ data_source_name }} data* — the knowledge base this agent uses to answer
+            questions.
+        </p>
+        <p style="margin-bottom: 1.5rem; color: #999; text-align: center; font-size: 0.8rem; font-style: italic;">
+            Note: All data is fictional and was generated using an LLM.
         </p>
 
         <section>
             <div class="section-header">
                 <h2 class="section-title">{{ data_source_name }} Data</h2>
-                <span class="count">{{ movies|length }} records</span>
+                <span class="count">{{ records|length }} records</span>
             </div>
 
             <div class="table-container">
@@ -276,10 +280,10 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {% for movie in movies %}
+                            {% for record in records %}
                             <tr>
                                 {% for header in headers %}
-                                <td>{{ movie[header] }}</td>
+                                <td>{{ record[header] }}</td>
                                 {% endfor %}
                             </tr>
                             {% endfor %}

@@ -23,8 +23,8 @@ auth = AgentAuth()
 
 @app.route("/")
 def index():
-    movies, headers = get_movies(app)
-    return render_template("index.html", movies=movies, headers=headers, data_source_name=DATA_SOURCE_NAME)
+    records, headers = get_movies(app)
+    return render_template("index.html", records=records, headers=headers, data_source_name=DATA_SOURCE_NAME)
 
 
 @app.route("/agent", methods=["POST"])
