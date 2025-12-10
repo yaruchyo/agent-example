@@ -12,6 +12,10 @@ app = Flask(__name__)
 
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 GEMINI_VERSION = os.getenv("GEMINI_VERSION")
+FILE_NAME = os.getenv("FILE_NAME", "data.csv")
+
+# Extract data source name without extension
+DATA_SOURCE_NAME = os.path.splitext(FILE_NAME)[0].replace("_", " ").title()
 
 llm = GeminiLLM(GEMINI_API_KEY, GEMINI_VERSION)
 auth = AgentAuth()
@@ -20,7 +24,7 @@ auth = AgentAuth()
 @app.route("/")
 def index():
     movies, headers = get_movies(app)
-    return render_template("index.html", movies=movies, headers=headers)
+    return render_template("index.html", movies=movies, headers=headers, data_source_name=DATA_SOURCE_NAME)
 
 
 @app.route("/agent", methods=["POST"])

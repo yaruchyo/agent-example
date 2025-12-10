@@ -1,34 +1,283 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ data_source_name }} Agent | Flask Web Server</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
-        body { font-family: sans-serif; margin: 20px; }
-        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
-        th { background-color: #f2f2f2; }
-        tr:nth-child(even) { background-color: #f9f9f9; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #fafafa;
+            color: #1a1a1a;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* Header */
+        .header {
+            margin-bottom: 3rem;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #16a34a;
+            margin-bottom: 1rem;
+        }
+
+        .badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: #16a34a;
+            border-radius: 50%;
+        }
+
+        .header h1 {
+            font-size: 2.25rem;
+            font-weight: 600;
+            color: #111;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        /* Endpoints */
+        .endpoints {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .endpoint {
+            background: #fff;
+            border: 1px solid #e5e5e5;
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+
+        .method {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            margin-bottom: 0.75rem;
+        }
+
+        .method.get {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .method.post {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .path {
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #111;
+            margin-bottom: 0.5rem;
+        }
+
+        .endpoint p {
+            color: #666;
+            font-size: 0.875rem;
+            line-height: 1.6;
+        }
+
+        .endpoint code {
+            background: #f3f4f6;
+            padding: 0.125rem 0.375rem;
+            border-radius: 4px;
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            font-size: 0.8rem;
+            color: #111;
+        }
+
+        /* Data Section */
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #111;
+        }
+
+        .count {
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        /* Table */
+        .table-container {
+            background: #fff;
+            border: 1px solid #e5e5e5;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .table-scroll {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background: #f9f9f9;
+            padding: 0.875rem 1rem;
+            text-align: left;
+            font-weight: 500;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #666;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        td {
+            padding: 0.875rem 1rem;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 0.875rem;
+            color: #333;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover td {
+            background: #fafafa;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #999;
+            font-size: 0.8rem;
+        }
+
+        .footer a {
+            color: #666;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: #111;
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 2rem 1rem;
+            }
+
+            .header h1 {
+                font-size: 1.75rem;
+            }
+
+            .endpoints {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
+
 <body>
-    <table>
-        <thead>
-            <tr>
-                {% for header in headers %}
-                <th>{{ header }}</th>
-            {% endfor %}
-            </tr>
-        </thead>
-        <tbody>
-            {% for movie in movies %}
-            <tr>
-                {% for header in headers %}
-                <td>{{ movie[header] }}</td>
-                {% endfor %}
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <div class="container">
+        <header class="header">
+            <div class="badge">Flask Server Running</div>
+            <h1>{{ data_source_name }} Agent</h1>
+            <p>Flask web server with two endpoints for data display and AI-powered queries</p>
+        </header>
+
+        <div class="endpoints">
+            <div class="endpoint">
+                <span class="method get">GET</span>
+                <div class="path">/</div>
+                <p>Displays synthetic <code>{{ data_source_name }}</code> data generated by LLM. This demo data
+                    represents a web page containing domain-specific information that the agent can analyze and answer
+                    questions about.</p>
+            </div>
+
+            <div class="endpoint">
+                <span class="method post">POST</span>
+                <div class="path">/agent</div>
+                <p>Designed to communicate with the orchestrator. When the orchestrator sends a request via REST API,
+                    this endpoint analyzes the query using LLM calls and sends back an intelligent response to the
+                    user's question.</p>
+            </div>
+        </div>
+
+        <section>
+            <div class="section-header">
+                <h2 class="section-title">{{ data_source_name }} Data</h2>
+                <span class="count">{{ movies|length }} records</span>
+            </div>
+
+            <div class="table-container">
+                <div class="table-scroll">
+                    <table>
+                        <thead>
+                            <tr>
+                                {% for header in headers %}
+                                <th>{{ header }}</th>
+                                {% endfor %}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for movie in movies %}
+                            <tr>
+                                {% for header in headers %}
+                                <td>{{ movie[header] }}</td>
+                                {% endfor %}
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Powered by <a href="https://flask.palletsprojects.com/">Flask</a> · <a href="https://oqtopus.dev">Oqtopus
+                    Orchestrator</a></p>
+        </footer>
+    </div>
 </body>
+
 </html>
