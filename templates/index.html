@@ -3,215 +3,500 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#fafafa">
     <title>{{ data_source_name }} Agent | Flask Web Server</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
+        /* ============================================
+           Mobile-First Design System
+           Base styles optimized for mobile (< 768px)
+           ============================================ */
+
+        :root {
+            /* Spacing scale - mobile optimized */
+            --space-xs: 0.5rem;
+            --space-sm: 0.75rem;
+            --space-md: 1rem;
+            --space-lg: 1.5rem;
+            --space-xl: 2rem;
+            --space-2xl: 3rem;
+
+            /* Colors */
+            --color-bg: #fafafa;
+            --color-surface: #ffffff;
+            --color-border: #e5e5e5;
+            --color-border-light: #f0f0f0;
+            --color-text-primary: #1a1a1a;
+            --color-text-secondary: #666666;
+            --color-text-muted: #999999;
+            --color-accent: #16a34a;
+            --color-accent-bg: #dcfce7;
+            --color-accent-dark: #166534;
+            --color-warning-bg: #fef3c7;
+            --color-warning-dark: #92400e;
+
+            /* Typography - fluid sizing with clamp() */
+            --font-size-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.8rem);
+            --font-size-sm: clamp(0.8rem, 0.75rem + 0.25vw, 0.875rem);
+            --font-size-base: clamp(0.875rem, 0.85rem + 0.25vw, 1rem);
+            --font-size-lg: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
+            --font-size-xl: clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem);
+            --font-size-2xl: clamp(1.5rem, 1.25rem + 1.25vw, 2.25rem);
+
+            /* Touch target minimum (44px Apple HIG / Material Design) */
+            --touch-target-min: 44px;
+
+            /* Border radius */
+            --radius-sm: 6px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+
+            /* Safe area insets for notched devices */
+            --safe-area-inset-top: env(safe-area-inset-top, 0);
+            --safe-area-inset-bottom: env(safe-area-inset-bottom, 0);
+            --safe-area-inset-left: env(safe-area-inset-left, 0);
+            --safe-area-inset-right: env(safe-area-inset-right, 0);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            /* Prevent text selection highlight on touch */
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            /* Prevent font scaling in landscape while allowing user zoom */
+            -webkit-text-size-adjust: 100%;
+            text-size-adjust: 100%;
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: #fafafa;
-            color: #1a1a1a;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--color-bg);
+            color: var(--color-text-primary);
             min-height: 100vh;
+            min-height: 100dvh;
+            /* Dynamic viewport height for mobile browsers */
             line-height: 1.6;
+            font-size: var(--font-size-base);
+            /* Smooth scrolling for internal links */
+            scroll-behavior: smooth;
+            /* Enable momentum scrolling on iOS */
+            -webkit-overflow-scrolling: touch;
         }
 
+        /* ============================================
+           Container - Mobile-first with safe areas
+           ============================================ */
         .container {
+            width: 100%;
             max-width: 1100px;
             margin: 0 auto;
-            padding: 3rem 2rem;
+            /* Tighter horizontal padding on mobile, generous vertical */
+            padding: var(--space-lg) var(--space-md);
+            padding-left: calc(var(--space-md) + var(--safe-area-inset-left));
+            padding-right: calc(var(--space-md) + var(--safe-area-inset-right));
         }
 
-        /* Header */
+        /* ============================================
+           Header - Mobile optimized
+           ============================================ */
         .header {
-            margin-bottom: 3rem;
+            margin-bottom: var(--space-xl);
         }
 
         .badge {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            font-size: 0.8rem;
+            gap: var(--space-xs);
+            font-size: var(--font-size-xs);
             font-weight: 500;
-            color: #16a34a;
-            margin-bottom: 1rem;
+            color: var(--color-accent);
+            margin-bottom: var(--space-sm);
+            /* Animate the status dot */
+            animation: pulse-badge 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-badge {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.7;
+            }
         }
 
         .badge::before {
             content: '';
-            width: 6px;
-            height: 6px;
-            background: #16a34a;
+            width: 8px;
+            height: 8px;
+            background: var(--color-accent);
             border-radius: 50%;
+            flex-shrink: 0;
         }
 
         .header h1 {
-            font-size: 2.25rem;
+            font-size: var(--font-size-2xl);
             font-weight: 600;
             color: #111;
-            margin-bottom: 0.5rem;
+            margin-bottom: var(--space-sm);
+            /* Prevent long titles from breaking layout */
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
         }
 
         .header p {
-            color: #666;
-            font-size: 1rem;
+            color: var(--color-text-secondary);
+            font-size: var(--font-size-sm);
+            line-height: 1.7;
         }
 
-        /* Endpoints */
+        .header-description {
+            margin-top: var(--space-md);
+        }
+
+        /* ============================================
+           Links - Touch-friendly with 44px target
+           ============================================ */
+        .touch-link {
+            display: inline-flex;
+            align-items: center;
+            min-height: var(--touch-target-min);
+            padding: var(--space-sm) 0;
+            color: var(--color-accent);
+            text-decoration: none;
+            font-weight: 500;
+            gap: var(--space-xs);
+            /* Remove hover, use active for touch feedback */
+            transition: opacity 0.15s ease;
+        }
+
+        .touch-link:active,
+        .touch-link:focus-visible {
+            opacity: 0.7;
+            outline: 2px solid var(--color-accent);
+            outline-offset: 4px;
+            border-radius: var(--radius-sm);
+        }
+
+        .touch-link--inline {
+            min-height: auto;
+            padding: 0;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .touch-link--inline:active,
+        .touch-link--inline:focus-visible {
+            opacity: 0.7;
+        }
+
+        /* ============================================
+           Endpoints Grid - Single column on mobile
+           ============================================ */
+        .endpoints-intro {
+            margin-top: var(--space-lg);
+            font-weight: 500;
+            color: #444;
+            font-size: var(--font-size-sm);
+        }
+
         .endpoints {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 3rem;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+            margin-bottom: var(--space-xl);
         }
 
         .endpoint {
-            background: #fff;
-            border: 1px solid #e5e5e5;
-            border-radius: 12px;
-            padding: 1.5rem;
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            padding: var(--space-lg);
+            /* Subtle shadow for depth on mobile */
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
         }
 
         .method {
             display: inline-block;
-            font-size: 0.7rem;
+            font-size: var(--font-size-xs);
             font-weight: 600;
-            padding: 0.25rem 0.5rem;
-            border-radius: 4px;
-            margin-bottom: 0.75rem;
+            padding: 0.35rem 0.6rem;
+            border-radius: var(--radius-sm);
+            margin-bottom: var(--space-sm);
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
         }
 
         .method.get {
-            background: #dcfce7;
-            color: #166534;
+            background: var(--color-accent-bg);
+            color: var(--color-accent-dark);
         }
 
         .method.post {
-            background: #fef3c7;
-            color: #92400e;
+            background: var(--color-warning-bg);
+            color: var(--color-warning-dark);
         }
 
         .path {
-            font-family: 'SF Mono', 'Fira Code', monospace;
-            font-size: 1.25rem;
+            font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+            font-size: var(--font-size-xl);
             font-weight: 600;
             color: #111;
-            margin-bottom: 0.5rem;
+            margin-bottom: var(--space-xs);
         }
 
-        .endpoint p {
-            color: #666;
-            font-size: 0.875rem;
-            line-height: 1.6;
+        .endpoint-description {
+            color: var(--color-text-secondary);
+            font-size: var(--font-size-sm);
+            line-height: 1.7;
         }
 
-        .endpoint code {
-            background: #f3f4f6;
-            padding: 0.125rem 0.375rem;
-            border-radius: 4px;
-            font-family: 'SF Mono', 'Fira Code', monospace;
-            font-size: 0.8rem;
-            color: #111;
+        .endpoint-description strong {
+            color: var(--color-text-primary);
         }
 
-        /* Data Section */
+        /* ============================================
+           Data Section
+           ============================================ */
+        .data-intro {
+            text-align: center;
+            padding: var(--space-lg) 0;
+        }
+
+        .data-intro-text {
+            color: var(--color-text-secondary);
+            font-size: var(--font-size-sm);
+            margin-bottom: var(--space-sm);
+        }
+
+        .data-intro-note {
+            color: var(--color-text-muted);
+            font-size: var(--font-size-xs);
+            font-style: italic;
+        }
+
         .section-header {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 1rem;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+            gap: var(--space-xs);
         }
 
         .section-title {
-            font-size: 1.125rem;
+            font-size: var(--font-size-lg);
             font-weight: 600;
             color: #111;
         }
 
         .count {
-            font-size: 0.8rem;
-            color: #888;
+            font-size: var(--font-size-xs);
+            color: var(--color-text-muted);
+            background: var(--color-border-light);
+            padding: 0.25rem 0.5rem;
+            border-radius: var(--radius-sm);
         }
 
-        /* Table */
+        /* ============================================
+           Responsive Table - Card layout on mobile
+           ============================================ */
         .table-container {
-            background: #fff;
-            border: 1px solid #e5e5e5;
-            border-radius: 12px;
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
             overflow: hidden;
         }
 
         .table-scroll {
             overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            /* Scroll hint shadow */
+            background:
+                linear-gradient(to right, var(--color-surface) 30%, transparent),
+                linear-gradient(to left, var(--color-surface) 30%, transparent),
+                linear-gradient(to right, rgba(0, 0, 0, 0.08), transparent 20px),
+                linear-gradient(to left, rgba(0, 0, 0, 0.08), transparent 20px);
+            background-position: left center, right center, left center, right center;
+            background-repeat: no-repeat;
+            background-size: 40px 100%, 40px 100%, 20px 100%, 20px 100%;
+            background-attachment: local, local, scroll, scroll;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
+            min-width: 500px;
+            /* Force horizontal scroll on small screens */
         }
 
         th {
             background: #f9f9f9;
-            padding: 0.875rem 1rem;
+            padding: var(--space-sm) var(--space-md);
             text-align: left;
             font-weight: 500;
-            font-size: 0.75rem;
+            font-size: var(--font-size-xs);
             text-transform: uppercase;
             letter-spacing: 0.03em;
-            color: #666;
-            border-bottom: 1px solid #e5e5e5;
+            color: var(--color-text-secondary);
+            border-bottom: 1px solid var(--color-border);
+            position: sticky;
+            top: 0;
+            white-space: nowrap;
         }
 
         td {
-            padding: 0.875rem 1rem;
-            border-bottom: 1px solid #f0f0f0;
-            font-size: 0.875rem;
-            color: #333;
+            padding: var(--space-sm) var(--space-md);
+            border-bottom: 1px solid var(--color-border-light);
+            font-size: var(--font-size-sm);
+            color: var(--color-text-primary);
+            /* Allow word break for long content */
+            word-break: break-word;
         }
 
         tr:last-child td {
             border-bottom: none;
         }
 
-        tr:hover td {
-            background: #fafafa;
+        /* Active state instead of hover for touch */
+        tr:active td {
+            background: #f5f5f5;
         }
 
-        /* Footer */
+        /* ============================================
+           Footer - Touch-friendly links
+           ============================================ */
         .footer {
             text-align: center;
-            padding: 2rem 0;
-            color: #999;
-            font-size: 0.8rem;
+            padding: var(--space-xl) 0;
+            padding-bottom: calc(var(--space-xl) + var(--safe-area-inset-bottom));
+            color: var(--color-text-muted);
+            font-size: var(--font-size-xs);
         }
 
-        .footer a {
-            color: #666;
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-xs);
+        }
+
+        .footer-link {
+            display: inline-flex;
+            align-items: center;
+            min-height: var(--touch-target-min);
+            padding: var(--space-sm) var(--space-sm);
+            color: var(--color-text-secondary);
             text-decoration: none;
+            border-radius: var(--radius-sm);
+            transition: background-color 0.15s ease;
         }
 
-        .footer a:hover {
-            color: #111;
+        .footer-link:active,
+        .footer-link:focus-visible {
+            background-color: var(--color-border-light);
+            outline: 2px solid var(--color-accent);
+            outline-offset: 2px;
         }
 
-        @media (max-width: 640px) {
+        .footer-separator {
+            color: var(--color-border);
+            user-select: none;
+        }
+
+        /* ============================================
+           Tablet and Desktop Enhancements (768px+)
+           ============================================ */
+        @media (min-width: 768px) {
             .container {
-                padding: 2rem 1rem;
+                padding: var(--space-2xl) var(--space-xl);
             }
 
-            .header h1 {
-                font-size: 1.75rem;
+            .header {
+                margin-bottom: var(--space-2xl);
             }
 
             .endpoints {
-                grid-template-columns: 1fr;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: var(--space-lg);
+                margin-bottom: var(--space-2xl);
+            }
+
+            /* Re-enable hover states for desktop */
+            .touch-link:hover {
+                opacity: 0.8;
+            }
+
+            tr:hover td {
+                background: #fafafa;
+            }
+
+            tr:active td {
+                background: inherit;
+            }
+
+            .footer-link:hover {
+                background-color: var(--color-border-light);
+                color: #111;
+            }
+
+            table {
+                min-width: auto;
+            }
+
+            .table-scroll {
+                background: none;
+            }
+        }
+
+        /* ============================================
+           Large Desktop (1024px+)
+           ============================================ */
+        @media (min-width: 1024px) {
+            .container {
+                padding: var(--space-2xl);
+            }
+        }
+
+        /* ============================================
+           Focus Visible - Keyboard navigation only
+           ============================================ */
+        :focus {
+            outline: none;
+        }
+
+        :focus-visible {
+            outline: 2px solid var(--color-accent);
+            outline-offset: 2px;
+        }
+
+        /* ============================================
+           Reduced Motion - Accessibility
+           ============================================ */
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            html {
+                scroll-behavior: auto;
             }
         }
     </style>
@@ -224,43 +509,50 @@
             <h1>{{ data_source_name }} Web Page</h1>
             <p>
                 <strong>What is this?</strong> This is a standalone web server — completely independent from any
-                orchestrator.
-                It has its own cloud infrastructure, resources, and LLM integration.
-                <br>
-                This project demonstrates how to
-                integrate an AI-powered agent that can be connected to platforms like Oqtopus into your already existing
-                website.
+                orchestrator. It has its own cloud infrastructure, resources, and LLM integration.
             </p>
-            <p style="margin-top: 0.75rem;">
-                📂 <a href="https://gitlab.com/yaruchyk.o/agent-example" style="color: #16a34a;">View source code of this project on GitLab</a>
+            <p class="header-description">
+                This project demonstrates how to integrate an AI-powered agent, which can be connected to platforms like Oqtopus, into your existing website.
             </p>
-            <p style="margin-top: 1rem; font-weight: 500; color: #444;">
+            <a href="https://gitlab.com/yaruchyk.o/agent-example" class="touch-link">
+                📂 View source code of this project on GitLab
+            </a>
+            <p class="endpoints-intro">
                 This simple server exposes 2 endpoints:
             </p>
         </header>
 
         <div class="endpoints">
-            <div class="endpoint">
+            <article class="endpoint">
                 <span class="method get">GET</span>
                 <div class="path">/</div>
-                <p><strong>Homepage</strong> — You're here! This page shows random placeholder data to mimic a simple real-world webpage.</p>
-            </div>
+                <p class="endpoint-description">
+                    <strong>Homepage</strong> — You're here! This page shows random placeholder data to mimic a simple
+                    real-world webpage.
+                </p>
+            </article>
 
-            <div class="endpoint">
+            <article class="endpoint">
                 <span class="method post">POST</span>
                 <div class="path">/agent</div>
-                <p><strong>AI Query Endpoint</strong> — When users ask questions through the Agentic Orchestrator (for example, via <a href="https://gitlab.com/yaruchyk.o/oqtopus" style="color: #16a34a;">oqtopus [GitLab Repo]</a>), the requests are routed here.
-                The server uses an LLM to analyze the Orchestrator’s request together with the available web data (see table below) and returns a response to the Orchestrator based on that information.</p>
-            </div>
+                <p class="endpoint-description">
+                    <strong>AI Query Endpoint</strong> — When users ask questions through the Agentic Orchestrator
+                    (for example, via <a href="https://gitlab.com/yaruchyk.o/oqtopus"
+                        class="touch-link--inline">oqtopus [GitLab Repo]</a>),
+                    the requests are routed here. The server uses an LLM to analyze the Orchestrator’s request together with
+                    the available web data (see table below) and returns a response.
+                </p>
+            </article>
         </div>
 
-        <p style="margin-top: 2rem; margin-bottom: 1.5rem; color: #666; text-align: center; font-size: 0.95rem;">
-            👇 Below is sample {{ data_source_name }} data* — the knowledge base this agent uses to answer
-            questions.
-        </p>
-        <p style="margin-bottom: 1.5rem; color: #999; text-align: center; font-size: 0.8rem; font-style: italic;">
-            Note: All data is fictional and was generated using an LLM.
-        </p>
+        <div class="data-intro">
+            <p class="data-intro-text">
+                👇 Below is sample {{ data_source_name }} data* — the knowledge base this agent uses to answer questions.
+            </p>
+            <p class="data-intro-note">
+                *Note: All data is fictional and was generated using an LLM.
+            </p>
+        </div>
 
         <section>
             <div class="section-header">
@@ -293,8 +585,11 @@
         </section>
 
         <footer class="footer">
-            <p>Powered by <a href="https://flask.palletsprojects.com/">Flask</a> · <a href="https://oqtopus.dev">Oqtopus
-                    Orchestrator</a></p>
+            <div class="footer-links">
+                <a href="https://flask.palletsprojects.com/" class="footer-link">Powered by Flask</a>
+                <span class="footer-separator">·</span>
+                <a href="https://oqtopus.dev" class="footer-link">Oqtopus Orchestrator</a>
+            </div>
         </footer>
     </div>
 </body>
